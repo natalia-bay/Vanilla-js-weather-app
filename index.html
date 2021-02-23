@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎨 Watercolor weather</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/14262f361d.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+
+  <body class="background-image">
+    <div class="container search-field">
+      <form id="search-form" class="input-group">
+        <input
+          type="search"
+          class="form-control"
+          id="search-input"
+          placeholder="Enter a city"
+          autocomplete="off"
+          autofocus=""
+        />
+        <button class="btn btn-outline-secondary" type="submit">
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </button>
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          id="current-location"
+        >
+          <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+
+    <div class="container city-box">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 id="current-city">Berlin</h1>
+        </div>
+        <div class="col-md-6" id="time"></div>
+      </div>
+
+      <div class="row align-items-center current-weather">
+        <div class="col-12 col-md-4 current-temp">
+          <span class="temp-value" id="degrees-now">19</span
+          ><sup class="degree-element">°</sup>
+          <span>
+            <ul class="temp-unit">
+              <li>
+                <span class="temp-cel active" onclick="recizeText()">C</span>
+              </li>
+              <li>
+                <span class="temp-far deactivated" onclick="recizeText()"
+                  >F</span
+                >
+              </li>
+            </ul>
+          </span>
+        </div>
+
+        <div class="col-12 col-md-8 weather-block">
+          <div class="row">
+            <h2 id="description">Cloudy</h2>
+          </div>
+          <div class="row">
+            <ul class="weather-details">
+              <li>
+                <span class="details-icon"
+                  ><i class="fas fa-temperature-low"></i
+                ></span>
+                <span>Feels like </span><span id="feelsLike"></span
+                ><span>°C</span>
+              </li>
+              <li>
+                <span class="details-icon"
+                  ><i class="fas fa-ruler-vertical"></i
+                ></span>
+                <span class="adjustHumidity">Humidity </span
+                ><span id="humidity"></span><span>%</span>
+              </li>
+              <li>
+                <span class="details-icon"
+                  ><i class="fas fa-arrow-down"></i
+                ></span>
+                <span class="adjustPressure">Pressure </span
+                ><span id="pressure"></span><span> hPa</span>
+              </li>
+              <li>
+                <span class="details-icon"><i class="fas fa-wind"></i></span>
+                <span class="adjustWind">Wind </span><span id="windSpeed"></span
+                ><span> km/h</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container forecast">
+        <div class="row justify-content-around daily">
+          <div class="col-sm-2 col-xs-12 date">
+            <div class="week-day" id="day1">Day 1</div>
+            <div class="weather-icon">
+              <i class="fas fa-cloud-sun-rain"></i>
+            </div>
+            <div><span id="tempMax"></span><span>°</span></div>
+            <div><span id="tempMin"></span><span>°</span></div>
+          </div>
+
+          <div class="col-sm-2 col-xs-12 date">
+            <div class="week-day" id="day2">Day 2</div>
+            <div class="weather-icon"><i class="fas fa-cloud-sun"></i></div>
+            <div class="temp-max">10°</div>
+            <div class="temp-min">4°</div>
+          </div>
+
+          <div class="col-sm-2 col-xs-12 date">
+            <div class="week-day" id="day3">Day 3</div>
+            <div class="weather-icon">
+              <i class="fas fa-cloud-showers-heavy"></i>
+            </div>
+            <div class="temp-max">11°</div>
+            <div class="temp-min">5°</div>
+          </div>
+
+          <div class="col-sm-2 col-xs-12 date">
+            <div class="week-day" id="day4">Day 4</div>
+            <div class="weather-icon"><i class="fas fa-sun"></i></div>
+            <div class="temp-max">5°</div>
+            <div class="temp-min">1°</div>
+          </div>
+
+          <div class="col-sm-2 col-xs-12 date">
+            <div class="week-day" id="day5">Day 5</div>
+            <div class="weather-icon"><i class="far fa-snowflake"></i></div>
+            <div class="temp-max">-2°</div>
+            <div class="temp-min">-6°</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        Open-source code by
+        <a
+          href="https://www.linkedin.com/in/natalia-bayduraeva-metaxa/"
+          target="_blank"
+          >natalia</a
+        >
+      </p>
+    </footer>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
