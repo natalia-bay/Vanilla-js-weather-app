@@ -3,17 +3,37 @@ body {
   color: #07264a;
 }
 
+h1 {
+  font-size: 70px;
+  margin-bottom: 0;
+  font-weight: 900;
+  padding-left: 25px;
+}
+
+h2 {
+  font-size: 56px;
+  font-weight: bold;
+  padding-left: 0px;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+footer {
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: white;
+}
+
 .background-image {
   background-image: url("../images/watercolor/day-cloudy.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.container {
-  max-width: 800px;
-}
-
 .city-box {
+  max-width: 800px;
   padding-top: 20px;
   padding-bottom: 35px;
   padding-left: 25px;
@@ -25,7 +45,8 @@ body {
 }
 
 .search-field {
-  margin-top: 20px;
+  max-width: 800px;
+  margin-top: 30px;
   padding: 0;
   margin-bottom: 20px;
 }
@@ -35,34 +56,6 @@ body {
   background-color: #07264a;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
-}
-
-.search-button:hover {
-  color: white;
-}
-
-.map-icon {
-  display: inline-block;
-  padding-left: 0;
-  padding-top: 3px;
-  font-size: 32px;
-}
-
-.map-icon:hover {
-  cursor: pointer;
-}
-
-h1 {
-  font-size: 70px;
-  margin-bottom: 0;
-  font-weight: 900;
-  padding-left: 25px;
-}
-
-#time {
-  text-align: right;
-  padding-right: 30px;
-  font-size: 20px;
 }
 
 .current-temp {
@@ -76,7 +69,7 @@ h1 {
   font-weight: bold;
 }
 
-.degree-element {
+.current-temp .degree-element {
   font-size: 40px;
   font-weight: bold;
   vertical-align: super;
@@ -85,28 +78,29 @@ h1 {
 
 .current-temp .temp-unit {
   display: inline-block;
-  list-style-type: none;
-  padding-left: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
   text-align: center;
 }
 
-.temp-unit:hover {
+.current-temp .temp-unit:hover {
   cursor: pointer;
 }
 
-.temp-cel {
+.current-temp .temp-cel {
   border: 1px solid rgb(92, 99, 107, 0.3);
   border-top: transparent;
   border-left: transparent;
   border-right: transparent;
 }
 
-.active {
+.current-temp .active {
   font-weight: bold;
   font-size: 40px;
 }
 
-.deactivated {
+.current-temp .deactivated {
   color: #6683ae;
   font-size: 20px;
 }
@@ -119,22 +113,14 @@ h1 {
   padding-left: 20px;
 }
 
-h2 {
-  font-size: 56px;
-  font-weight: bold;
-  padding-left: 0px;
-  margin-bottom: 5px;
-  text-transform: capitalize;
-}
-
 .weather-details {
   columns: 2;
   -webkit-columns: 2;
   -moz-columns: 2;
-  list-style-type: none;
-  padding-left: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
   font-weight: bold;
-  margin-bottom: 0;
   letter-spacing: 0.01em;
 }
 
@@ -158,47 +144,12 @@ h2 {
   border-radius: 4px;
 }
 
-.date:hover {
-  cursor: pointer;
-}
-
-#tempMax {
-  font-weight: bold;
-}
-
 .week-day {
   font-weight: bold;
   text-transform: uppercase;
   font-size: 20px;
 }
 
-.week-date {
-  font-size: 12px;
-}
 .daily {
   margin-top: 30px;
-}
-
-.box {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.hourly-forecast {
-  margin-top: 25px;
-  background-color: transparent;
-  border-color: rgb(52, 82, 122, 0.3);
-}
-
-.hour {
-  text-align: center;
-  margin: 20px, 50px;
-}
-
-footer {
-  text-align: center;
-  font-size: 13px;
-  font-weight: bold;
-  margin-top: 15px;
-  color: white;
 }
