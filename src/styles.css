@@ -10,11 +10,9 @@ h1 {
   padding-left: 25px;
 }
 
-h2 {
-  font-size: 56px;
+#description {
+  font-size: 40px;
   font-weight: bold;
-  padding-left: 0px;
-  margin-bottom: 5px;
   text-transform: capitalize;
 }
 
@@ -40,7 +38,7 @@ footer {
   padding-right: 25px;
   border: 1px solid rgb(52, 82, 122, 0.3);
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.4);
   border-color: rgb(52, 82, 122, 0.3);
 }
 
@@ -113,6 +111,17 @@ footer {
   padding-left: 20px;
 }
 
+.weather-description {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 70px;
+}
+
+.weather-description li {
+  display: inline;
+}
+
 .weather-details {
   columns: 2;
   -webkit-columns: 2;
@@ -155,8 +164,9 @@ footer {
 }
 
 #icon {
-  width: 40px;
-  height: 40px;
-  margin: 0;
-  padding: 0;
+  width: 80px;
+  height: 80px;
+  position: relative;
+  right: -5px;
+  bottom: 15px;
 }

@@ -33,7 +33,7 @@ function showWeather(response) {
     response.data.main.temp
   );
   document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
+    response.data.weather[0].description;
   document.querySelector("#feelsLike").innerHTML = Math.round(
     response.data.main.feels_like
   );
