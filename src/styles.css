@@ -153,3 +153,10 @@ footer {
 .daily {
   margin-top: 30px;
 }
+
+#icon {
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+}
