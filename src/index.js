@@ -22,16 +22,8 @@ function handleSubmit(event) {
   getWeather(city);
 }
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", handleSubmit);
-
-getWeather("Berlin");
-
 function showWeather(response) {
   document.querySelector("#current-city").innerHTML = response.data.name;
-  document.querySelector("#degrees-now").innerHTML = Math.round(
-    response.data.main.temp
-  );
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
   document.querySelector("#feelsLike").innerHTML = Math.round(
@@ -57,6 +49,10 @@ function showWeather(response) {
   document
     .querySelector("#icon")
     .setAttribute("alt", response.data.weather[0].description);
+  document.querySelector("#degrees-now").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  celciusTemp = response.data.main.temp;
 }
 
 function getCurrentLocation(event) {
@@ -74,5 +70,35 @@ function fetchLocation(position) {
   axios.get(apiUrl).then(showWeather);
 }
 
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#degrees-now");
+  celciusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemp = (celciusTemp * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+function displyCelciusTemp(event) {
+  event.preventDefault();
+  celciusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#degrees-now");
+  temperatureElement.innerHTML = Math.round(celciusTemp);
+}
+
+let celciusTemp = null;
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSubmit);
+
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", getCurrentLocation);
+
+let celciusLink = document.querySelector("#temp-cel");
+celciusLink.addEventListener("click", displyCelciusTemp);
+
+let fahrenheitLink = document.querySelector("#temp-fahr");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+
+getWeather("Berlin");

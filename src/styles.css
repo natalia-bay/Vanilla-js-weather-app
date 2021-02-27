@@ -80,27 +80,25 @@ footer {
   padding: 0;
   margin: 0;
   text-align: center;
+  font-size: 33px;
 }
 
-.current-temp .temp-unit:hover {
-  cursor: pointer;
-}
-
-.current-temp .temp-cel {
+.current-temp #temp-cel {
   border: 1px solid rgb(92, 99, 107, 0.3);
   border-top: transparent;
   border-left: transparent;
   border-right: transparent;
+  text-decoration: none;
+}
+
+.current-temp #temp-fahr {
+  text-decoration: none;
 }
 
 .current-temp .active {
   font-weight: bold;
-  font-size: 40px;
-}
-
-.current-temp .deactivated {
-  color: #6683ae;
-  font-size: 20px;
+  color: #07264a;
+  cursor: default;
 }
 
 .current-weather {
