@@ -57,9 +57,10 @@ footer {
 }
 
 .current-temp {
-  height: 130px;
-  width: 230px;
-  text-align: center;
+  height: 150px;
+  width: 150px;
+  text-align: right;
+  padding-right: 0;
 }
 
 .current-temp .temp-value {
@@ -68,22 +69,28 @@ footer {
 }
 
 .current-temp .degree-element {
-  font-size: 40px;
+  font-size: 35px;
   font-weight: bold;
   vertical-align: super;
-  top: -0.9em;
+  top: -43px;
 }
 
-.current-temp .temp-unit {
+.units {
+  padding-left: 14px;
+}
+
+.units .temp-unit {
   display: inline-block;
   list-style: none;
   padding: 0;
   margin: 0;
   text-align: center;
-  font-size: 33px;
+  font-size: 32px;
+  position: relative;
+  bottom: 1px;
 }
 
-.current-temp #temp-cel {
+.units #temp-cel {
   border: 1px solid rgb(92, 99, 107, 0.3);
   border-top: transparent;
   border-left: transparent;
@@ -91,11 +98,11 @@ footer {
   text-decoration: none;
 }
 
-.current-temp #temp-fahr {
+.units #temp-fahr {
   text-decoration: none;
 }
 
-.current-temp .active {
+.units .active {
   font-weight: bold;
   color: #07264a;
   cursor: default;
@@ -106,18 +113,22 @@ footer {
 }
 
 .weather-block {
-  padding-left: 20px;
+  padding-left: 22px;
 }
 
 .weather-description {
   list-style: none;
   margin: 0;
   padding: 0;
-  height: 70px;
+  height: 60px;
 }
 
 .weather-description li {
   display: inline;
+}
+
+.details {
+  padding-bottom: 15px;
 }
 
 .weather-details {
@@ -165,9 +176,9 @@ footer {
 }
 
 #icon {
-  width: 80px;
-  height: 80px;
+  width: 75px;
+  height: 75px;
   position: relative;
   right: 6px;
-  bottom: 10px;
+  bottom: 11px;
 }

@@ -51,19 +51,19 @@
       <h1 id="current-city"></h1>
 
       <div class="row align-items-center current-weather">
-        <div class="col-12 col-md-4 current-temp">
+        <div class="col-2 current-temp">
           <span class="temp-value" id="degrees-now"></span
           ><sup class="degree-element">°</sup>
-          <span>
-            <ul class="temp-unit">
-              <li>
-                <a href="#" class="active" id="temp-cel">C</a>
-              </li>
-              <li>
-                <a href="#" id="temp-fahr">F</a>
-              </li>
-            </ul>
-          </span>
+        </div>
+        <div class="col-1 units">
+          <ul class="temp-unit">
+            <li>
+              <a href="#" class="active" id="temp-cel">C</a>
+            </li>
+            <li>
+              <a href="#" id="temp-fahr">F</a>
+            </li>
+          </ul>
         </div>
 
         <div class="col-12 col-md-8 weather-block">
@@ -71,7 +71,7 @@
             <li id="description"></li>
             <li><img src="" id="icon" /></li>
           </ul>
-          <div>
+          <div class="details">
             <ul class="weather-details">
               <li>
                 <span class="details-icon"
