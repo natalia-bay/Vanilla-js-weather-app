@@ -101,4 +101,4 @@ celciusLink.addEventListener("click", displyCelciusTemp);
 let fahrenheitLink = document.querySelector("#temp-fahr");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
-getWeather("Berlin");
+getWeather("Cologne");
