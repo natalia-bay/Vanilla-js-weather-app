@@ -4,6 +4,20 @@ function formatDay(date) {
   return days[dayIndex];
 }
 
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${hours}:${minutes}`;
+}
+
 let currentTime = new Date();
 let dayElement = document.querySelector("#day1");
 dayElement.innerHTML = formatDay(currentTime);
@@ -41,21 +55,8 @@ function displayWeather(response) {
   celciusTemp = response.data.main.temp;
 }
 
-function formatHours(timestamp) {
-  let date = new Date(timestamp);
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  return `${hours}:${minutes}`;
-}
-
 function displayForecast(response) {
+  reset();
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = null;
   let forecast = null;
@@ -80,14 +81,22 @@ function displayForecast(response) {
   }
 }
 
+function showError() {
+  document.querySelector(".error").style = `display:block`;
+}
+
+function reset() {
+  document.querySelector(".error").style = `display: none`;
+}
+
 function getWeather(city) {
   let units = `metric`;
   let apiKey = "7345ee018fd528da4cd97bec34042c86";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(displayWeather);
+  axios.get(apiUrl).then(displayWeather).catch(showError);
 
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(displayForecast);
+  axios.get(apiUrl).then(displayForecast).catch(showError);
 }
 
 function handleSubmit(event) {
