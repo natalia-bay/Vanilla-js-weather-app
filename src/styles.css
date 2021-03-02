@@ -155,9 +155,11 @@ footer {
 }
 
 .hourly-forecast {
-  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: transparent;
-  border-color: rgb(52, 82, 122, 0.3);
+  border-top: 1px solid rgb(52, 82, 122, 0.2);
+  border-bottom: 1px solid rgb(52, 82, 122, 0.2);
 }
 
 .hour {
@@ -168,15 +170,22 @@ footer {
 .hourly-forecast img {
   display: block;
   margin: 0 auto;
-  height: 48px;
-  width: 48px;
+  height: 40px;
+  width: 40px;
+}
+
+#daily-forecast img {
+  display: block;
+  margin: 0 auto;
+  height: 50px;
+  width: 50px;
 }
 
 .date {
   text-align: center;
   font-size: 20px;
   padding: 10px;
-  border: 1px solid rgb(52, 82, 122, 0.3);
+  border: 1px solid rgb(52, 82, 122, 0.2);
   border-radius: 4px;
 }
 .today {
@@ -190,7 +199,7 @@ footer {
 }
 
 #daily-forecast {
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 #icon {
