@@ -4,6 +4,27 @@ function formatDay(date) {
   return days[dayIndex];
 }
 
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let months = [
+    "Jan",
+    "Feb",
+    "March",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let month = months[date.getMonth()];
+  let monthDate = date.getDate();
+  return `${monthDate} ${month}`;
+}
+
 function formatHours(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -99,25 +120,27 @@ function getWeather(city) {
   axios.get(apiUrl).then(displayForecast).catch(showError);
 }
 
-function handleSubmit(event) {
-  event.preventDefault();
-  let city = document.querySelector("#search-input").value;
-  getWeather(city);
-}
-
-function getCurrentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(fetchLocation);
-}
-
-function fetchLocation(position) {
+function searchLocation(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let units = "metric";
   let apiKey = "7345ee018fd528da4cd97bec34042c86";
-  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
-  let apiUrl = `${apiEndpoint}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayWeather);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&${units}`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#search-input").value;
+  getWeather(city);
 }
 
 function displayFahrenheitTemp(event) {
