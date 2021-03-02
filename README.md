@@ -11,6 +11,12 @@ The weather forecast single page app utilizes the OpenWeatherMap API to extract 
 * JavaScript
 * HTML5/CSS3
 
+### Vendor Technologies
+* FontAwesome
+
+### Frameworks and Technologies
+* Bootstrap
+
 ### Third-party APIs
 
 * OpenWeatherMap API
