@@ -1,5 +1,4 @@
 // to do
-// implement local time conversion
 // implement background switch
 // adjust grid for current weather
 // pollution api http://api.openweathermap.org/data/2.5/air_pollution?lat=50&lon=50&appid=7345ee018fd528da4cd97bec34042c86
@@ -8,7 +7,6 @@ function formatDay(timestamp) {
   let dateValue = new Date(timestamp);
   let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   let dayIndex = days[dateValue.getDay()];
-
   let now = `${dayIndex}`;
   return now;
 }
@@ -23,13 +21,18 @@ function formatHours(timestamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-
   return `${hours}:${minutes}`;
 }
 
-let currentTime = new Date();
-//let dayElement = document.querySelector("#day1");
-//dayElement.innerHTML = formatDay(currentTime);
+function formatLocalHours(timeZone, datetime) {
+  let now = new Date();
+  if (datetime !== null) {
+    now = new Date(datetime * 1000);
+  }
+  let timeZoneOffsetInMs = now.getTimezoneOffset() * 60 * 1000;
+  let timeZoneInMs = timeZone * 1000;
+  return now.getTime() + timeZoneOffsetInMs + timeZoneInMs;
+}
 
 function displayWeather(response) {
   document.querySelector("#current-city").innerHTML = response.data.name;
@@ -70,6 +73,11 @@ function displayWeather(response) {
   let unit = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLatitude}&lon=${cityLongitude}&exclude=current,minutely,hourly,alerts&units=${unit}&appid=${apiKey}`;
   axios.get(apiUrl).then(displayDailyForecast);
+
+  let localTimeStamp = formatLocalHours(response.data.timezone, null);
+  let dateAtLocation = formatHours(localTimeStamp);
+  locationDateTimeStamp = localTimeStamp;
+  document.querySelector("#local-time").innerHTML = dateAtLocation;
 }
 
 function displayHourlyForecast(response) {
@@ -82,7 +90,12 @@ function displayHourlyForecast(response) {
     let forecast = response.data.list[index];
     forecastElement.innerHTML += `      
      <div class="col-1 hour">
-        <div class="hour-unit">${formatHours(forecast.dt * 1000)}</div>
+        <div class="hour-unit">${formatHours(
+          formatLocalHours(
+            response.data.city.timezone,
+            response.data.list[index].dt
+          )
+        )}</div>
         <div class="weather-icon"><img
         src="http://openweathermap.org/img/wn/${
           forecast.weather[0].icon
@@ -91,7 +104,6 @@ function displayHourlyForecast(response) {
         <div class="hourly-temp-max"><strong>${Math.round(
           forecast.main.temp_max
         )}°</strong></div>
-       
       </div>`;
   }
 }
