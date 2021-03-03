@@ -1,3 +1,9 @@
+// to do
+// implement local time conversion
+// implement background switch
+// adjust grid for current weather
+// pollution api http://api.openweathermap.org/data/2.5/air_pollution?lat=50&lon=50&appid=7345ee018fd528da4cd97bec34042c86
+
 function formatDay(timestamp) {
   let dateValue = new Date(timestamp);
   let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -95,7 +101,7 @@ function displayDailyForecast(response) {
   dailyForecastElement.innerHTML = null;
   let dailyForecastArray = null;
 
-  for (let index = 1; index < 6; index++) {
+  for (let index = 0; index < 5; index++) {
     dailyForecastArray = response.data.daily[index];
     dailyForecastElement.innerHTML += `
     <div class="col-2 date">
