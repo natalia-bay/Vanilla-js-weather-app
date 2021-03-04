@@ -1,8 +1,3 @@
-// to do
-// implement background switch
-// adjust grid for current weather
-// pollution api http://api.openweathermap.org/data/2.5/air_pollution?lat=50&lon=50&appid=7345ee018fd528da4cd97bec34042c86
-
 function formatDay(timestamp) {
   let dateValue = new Date(timestamp);
   let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -31,7 +26,8 @@ function formatLocalHours(timeZone, datetime) {
   }
   let timeZoneOffsetInMs = now.getTimezoneOffset() * 60 * 1000;
   let timeZoneInMs = timeZone * 1000;
-  return now.getTime() + timeZoneOffsetInMs + timeZoneInMs;
+  let convertedTime = now.getTime() + timeZoneOffsetInMs + timeZoneInMs;
+  return convertedTime;
 }
 
 function displayWeather(response) {
@@ -46,12 +42,6 @@ function displayWeather(response) {
     response.data.wind.speed
   );
   document.querySelector("#pressure").innerHTML = response.data.main.pressure;
-  //document.querySelector("#tempMax").innerHTML = Math.round(
-  // response.data.main.temp_max
-  // );
-  //document.querySelector("#tempMin").innerHTML = Math.round(
-  //  response.data.main.temp_min
-  //);
   document
     .querySelector("#icon")
     .setAttribute(
@@ -76,8 +66,30 @@ function displayWeather(response) {
 
   let localTimeStamp = formatLocalHours(response.data.timezone, null);
   let dateAtLocation = formatHours(localTimeStamp);
+  console.log(dateAtLocation);
   locationDateTimeStamp = localTimeStamp;
   document.querySelector("#local-time").innerHTML = dateAtLocation;
+
+  //update background image
+  //if (dateAtLocation >= 5 && dateAtLocation < 9) {
+  //document.body.style.backgroundImage =
+  //"url('images/watercolor/morning.jpg')";
+  //document.body.style.backgroundRepeat = "no-repeat";
+  //document.body.style.backgroundSize = "cover";
+  //} else if (dateAtLocation >= 9 && dateAtLocation < 16) {
+  //document.body.style.backgroundImage = "url('images/watercolor/day.jpg')";
+  //document.body.style.backgroundRepeat = "no-repeat";
+  //document.body.style.backgroundSize = "cover";
+  //} else if (dateAtLocation >= 16 && dateAtLocation < 20) {
+  //document.body.style.backgroundImage =
+  //"url('images/watercolor/evening.jpg')";
+  //document.body.style.backgroundRepeat = "no-repeat";
+  //document.body.style.backgroundSize = "cover";
+  //} else {
+  //document.body.style.backgroundImage = "url('images/watercolor/night.jpg')";
+  //document.body.style.backgroundRepeat = "no-repeat";
+  //document.body.style.backgroundSize = "cover";
+  //  }
 }
 
 function displayHourlyForecast(response) {
@@ -125,11 +137,9 @@ function displayDailyForecast(response) {
         dailyForecastArray.weather[0].icon
       }@2x.png" alt="${dailyForecastArray.weather[0].description}">
       </div>
-      <div class="daily-forecast-max"> ${Math.round(
-        dailyForecastArray.temp.max
-      )}°
+      <div class="daily-temp-max"> ${Math.round(dailyForecastArray.temp.max)}°
         </div>
-  <div class="daily-forecast-min"> ${Math.round(dailyForecastArray.temp.min)}°
+  <div class="daily-temp-min"> ${Math.round(dailyForecastArray.temp.min)}°
         </div>
     `;
   }

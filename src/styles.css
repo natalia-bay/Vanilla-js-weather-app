@@ -2,6 +2,11 @@ body {
   font-family: "Poppins", sans-serif;
   color: #07264a;
 }
+.background-image {
+  background-image: url("../images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 h1 {
   font-size: 70px;
@@ -26,12 +31,7 @@ footer {
 
 footer a {
   text-decoration: none;
-}
-
-.background-image {
-  background-image: url("../images/watercolor/day-cloudy.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  color: rgb(255, 182, 113);
 }
 
 .city-box {
@@ -42,7 +42,7 @@ footer a {
   padding-right: 20px;
   border: 1px solid rgb(52, 82, 122, 0.3);
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.5);
   border-color: rgb(52, 82, 122, 0.3);
 }
 
@@ -50,7 +50,7 @@ footer a {
   max-width: 800px;
   margin-top: 20px;
   padding: 0;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .btn {
@@ -98,6 +98,7 @@ h5 {
   font-size: 32px;
   position: relative;
   bottom: 1px;
+  color: #48484a;
 }
 
 .units #temp-cel {
@@ -225,4 +226,8 @@ h5 {
 
 .date index[0] {
   box-shadow: 0px 0px 10px #4195fc;
+}
+
+.daily-temp-min {
+  color: #48484a;
 }
