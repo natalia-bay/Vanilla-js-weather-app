@@ -33,7 +33,7 @@ function formatLocalHours(timeZone, datetime) {
 function displayWeather(response) {
   document.querySelector("#current-city").innerHTML = response.data.name;
   document.querySelector("#description").innerHTML =
-    response.data.weather[0].description;
+    response.data.weather[0].main;
   document.querySelector("#feelsLike").innerHTML = Math.round(
     response.data.main.feels_like
   );
@@ -128,7 +128,7 @@ function displayDailyForecast(response) {
   for (let index = 0; index < 5; index++) {
     dailyForecastArray = response.data.daily[index];
     dailyForecastElement.innerHTML += `
-    <div class="col-2 date">
+    <div class="col-2" id="date">
       <div class= "week-day">
       ${formatDay(dailyForecastArray.dt * 1000)}
       </div>
@@ -142,6 +142,10 @@ function displayDailyForecast(response) {
   <div class="daily-temp-min"> ${Math.round(dailyForecastArray.temp.min)}°
         </div>
     `;
+  }
+  //add glowing border for today
+  if ((response.data.daily = [0])) {
+    document.getElementById("date").style.boxShadow = "0px 0px 7px #F4BF9D";
   }
 }
 
