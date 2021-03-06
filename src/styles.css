@@ -2,11 +2,6 @@ body {
   font-family: "Poppins", sans-serif;
   color: #07264a;
 }
-.background-image {
-  background-image: url("../images/background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
 h1 {
   font-size: 70px;

@@ -1,3 +1,6 @@
+// to do
+// add temperature conversion for forecast
+
 function formatDay(timestamp) {
   let dateValue = new Date(timestamp);
   let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -65,31 +68,25 @@ function displayWeather(response) {
   axios.get(apiUrl).then(displayDailyForecast);
 
   let localTimeStamp = formatLocalHours(response.data.timezone, null);
-  let dateAtLocation = formatHours(localTimeStamp);
-  console.log(dateAtLocation);
+  let timeAtLocation = formatHours(localTimeStamp);
+  console.log(timeAtLocation);
   locationDateTimeStamp = localTimeStamp;
-  document.querySelector("#local-time").innerHTML = dateAtLocation;
+  document.querySelector("#local-time").innerHTML = timeAtLocation;
 
-  //update background image
-  //if (dateAtLocation >= 5 && dateAtLocation < 9) {
-  //document.body.style.backgroundImage =
-  //"url('images/watercolor/morning.jpg')";
-  //document.body.style.backgroundRepeat = "no-repeat";
-  //document.body.style.backgroundSize = "cover";
-  //} else if (dateAtLocation >= 9 && dateAtLocation < 16) {
-  //document.body.style.backgroundImage = "url('images/watercolor/day.jpg')";
-  //document.body.style.backgroundRepeat = "no-repeat";
-  //document.body.style.backgroundSize = "cover";
-  //} else if (dateAtLocation >= 16 && dateAtLocation < 20) {
-  //document.body.style.backgroundImage =
-  //"url('images/watercolor/evening.jpg')";
-  //document.body.style.backgroundRepeat = "no-repeat";
-  //document.body.style.backgroundSize = "cover";
-  //} else {
-  //document.body.style.backgroundImage = "url('images/watercolor/night.jpg')";
-  //document.body.style.backgroundRepeat = "no-repeat";
-  //document.body.style.backgroundSize = "cover";
-  //  }
+  //set background gradient
+  if (timeAtLocation >= 5 && timeAtLocation < 9) {
+    document.body.style.background =
+      "radial-gradient(circle at 10% 20%, rgb(248, 213, 214) 0%, rgb(243, 242, 229) 90%);";
+  } else if (timeAtLocation >= 9 && timeAtLocation < 16) {
+    document.body.style.background =
+      "radial-gradient(circle at 0.7% 1%, rgb(215, 248, 247) 0%, rgb(102, 188, 239) 100.2%);";
+  } else if (timeAtLocation >= 16 && timeAtLocation < 20) {
+    document.body.style.background =
+      "radial-gradient(circle at 10% 20%, rgba(0, 149, 218, 0.85) 9.9%, rgb(56, 80, 114) 100.3%);";
+  } else {
+    document.body.style.background =
+      "linear-gradient(109.6deg, rgb(20, 30, 48) 11.2%, rgb(36, 59, 85) 91.1%);";
+  }
 }
 
 function displayHourlyForecast(response) {
