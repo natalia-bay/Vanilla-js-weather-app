@@ -73,19 +73,20 @@ function displayWeather(response) {
   locationDateTimeStamp = localTimeStamp;
   document.querySelector("#local-time").innerHTML = timeAtLocation;
 
+  let hours = timeAtLocation.split(":")[0];
   //set background gradient
-  if (timeAtLocation >= 5 && timeAtLocation < 9) {
+  if (hours >= 5 && hours < 9) {
     document.body.style.background =
-      "radial-gradient(circle at 10% 20%, rgb(248, 213, 214) 0%, rgb(243, 242, 229) 90%);";
-  } else if (timeAtLocation >= 9 && timeAtLocation < 16) {
+      "radial-gradient(circle at 10% 20%, rgb(248, 213, 214) 0%, rgb(243, 242, 229) 90%)";
+  } else if (hours >= 9 && hours < 16) {
     document.body.style.background =
-      "radial-gradient(circle at 0.7% 1%, rgb(215, 248, 247) 0%, rgb(102, 188, 239) 100.2%);";
-  } else if (timeAtLocation >= 16 && timeAtLocation < 20) {
+      "radial-gradient(circle at 0.7% 1%, rgb(215, 248, 247) 0%, rgb(102, 188, 239) 100.2%)";
+  } else if (hours >= 16 && hours < 20) {
     document.body.style.background =
-      "radial-gradient(circle at 10% 20%, rgba(0, 149, 218, 0.85) 9.9%, rgb(56, 80, 114) 100.3%);";
+      "radial-gradient(circle at 10% 20%, rgba(0, 149, 218, 0.85) 9.9%, rgb(56, 80, 114) 100.3%)";
   } else {
     document.body.style.background =
-      "linear-gradient(109.6deg, rgb(20, 30, 48) 11.2%, rgb(36, 59, 85) 91.1%);";
+      "linear-gradient(109.6deg, rgb(20, 30, 48) 11.2%, rgb(36, 59, 85) 91.1%)";
   }
 }
 
