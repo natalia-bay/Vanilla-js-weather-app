@@ -73,30 +73,24 @@ function displayWeather(response) {
   locationDateTimeStamp = localTimeStamp;
   document.querySelector("#local-time").innerHTML = timeAtLocation;
 
-  //set background gradient
+  //set background
   let hours = timeAtLocation.split(":")[0];
-
-  if (hours >= 5 && hours < 9) {
-    document.body.style.background =
-      "radial-gradient(circle at 10% 20%, rgb(248, 213, 214) 0%, rgb(243, 242, 229) 90%)";
-    //document.querySelector(".sun").style.display = "initial";
-  } else if (hours >= 9 && hours < 16) {
-    document.body.style.background =
-      "linear-gradient(to top, #00c6fb 0%, #005bea 100%)";
-  } else if (hours >= 16 && hours < 20) {
-    document.body.style.background =
-      "radial-gradient(circle at 10% 20%, rgba(0, 149, 218, 0.85) 9.9%, rgb(56, 80, 114) 100.3%)";
-  } else {
-    document.body.style.backgroundColor = "#010028";
-    document.body.style.backgroundImage =
-      "radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%)";
-    document.body.style.backgroundSize =
-      "4px 4px, 3px 3px, 5px 5px, 3px 3px, 6px 6px, 4px 4px, 5px 5px, 4px 4px, 6px 6px, 3px 3px, 5px 5px, 4px 4px, 3px 3px, 6px 6px, 5px 5px, 4px 4px, 5px 5px, 6px 6px";
-    document.body.style.backgroundPosition =
-      "20% 10%, 5% 20%, 10% 75%, 22% 35%, 30% 30%, 40% 50%, 45% 20%, 65% 20%, 85% 30%, 98% 90%, 20% 80%, 50% 80%, 75% 80%, 89% 75%, 90% 95%, 60% 70%, 65% 40%, 90% 20%";
+  if (hours >= 5 && hours < 8) {
+    document.body.style.backgroundImage = "url('images/morning.jpg')";
     document.body.style.backgroundRepeat = "no-repeat";
-    //("ease-in 0.3s infinite" to{document.body.style.backgroundImage = "radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%),radial-gradient(circle, #fff 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, #fff 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, #fff 20%, transparent 30%)  radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, #fff 20%, transparent 30%), radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, #fff 20%, transparent 30%),  radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%) radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, #fff 20%, transparent 30%),radial-gradient(circle, rgba(255,255,255,0.7) 20%, transparent 30%), radial-gradient(circle, #fff 20%, transparent 30%), radial-gradient(circle, #fff 20%, transparent 30%)"};
-    // )
+    document.body.style.backgroundSize = "cover";
+  } else if (hours >= 8 && hours < 16) {
+    document.body.style.backgroundImage = "url('images/day.jpg')";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
+  } else if (hours >= 16 && hours < 20) {
+    document.body.style.backgroundImage = "url('images/evening.jpg')";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
+  } else {
+    document.body.style.backgroundImage = "url('images/night.jpg')";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
   }
 }
 
@@ -154,7 +148,8 @@ function displayDailyForecast(response) {
 
   //add glowing border for today
   if ((response.data.daily = [0])) {
-    document.getElementById("date").style.boxShadow = "0px 0px 7px #F4BF9D";
+    document.getElementById("date").style.boxShadow =
+      "rgb(255 255 255) 0px 0px 7px";
   }
 }
 
@@ -164,11 +159,6 @@ function showError() {
 
 function reset() {
   document.querySelector(".error").style = `display: none`;
-  document.querySelector("#cloud-circle1").style = `display: none`;
-  document.querySelector("#cloud-circle2").style = `display: none`;
-  document.querySelector("#cloud-circle3").style = `display: none`;
-  document.querySelector("#mist").style = `display: none`;
-  document.querySelector(".sun").style = `display: none`;
 }
 
 function getWeather(city) {
