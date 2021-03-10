@@ -44,7 +44,7 @@ function displayWeather(response) {
   document.querySelector("#windSpeed").innerHTML = Math.round(
     response.data.wind.speed
   );
-  document.querySelector("#pressure").innerHTML = response.data.main.pressure;
+  //document.querySelector("#pressure").innerHTML = response.data.main.pressure;
   document
     .querySelector("#icon")
     .setAttribute(
@@ -69,17 +69,16 @@ function displayWeather(response) {
 
   let localTimeStamp = formatLocalHours(response.data.timezone, null);
   let timeAtLocation = formatHours(localTimeStamp);
-  console.log(timeAtLocation);
   locationDateTimeStamp = localTimeStamp;
   document.querySelector("#local-time").innerHTML = timeAtLocation;
 
   //set background
   let hours = timeAtLocation.split(":")[0];
-  if (hours >= 5 && hours < 8) {
+  if (hours >= 5 && hours < 9) {
     document.body.style.backgroundImage = "url('images/morning.jpg')";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
-  } else if (hours >= 8 && hours < 16) {
+  } else if (hours >= 9 && hours < 16) {
     document.body.style.backgroundImage = "url('images/day.jpg')";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
@@ -148,9 +147,13 @@ function displayDailyForecast(response) {
 
   //add glowing border for today
   if ((response.data.daily = [0])) {
-    document.getElementById("date").style.boxShadow =
+    document.querySelector("#date").style.boxShadow =
       "rgb(255 255 255) 0px 0px 7px";
   }
+
+  //display precipitation
+  document.querySelector("#precipitation").innerHTML =
+    response.data.daily[0].pop * 100;
 }
 
 function showError() {
