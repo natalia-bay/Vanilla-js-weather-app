@@ -151,8 +151,9 @@ function displayDailyForecast(response) {
     `;
   }
   //display precipitation
-  document.querySelector("#precipitation").innerHTML =
-    response.data.daily[0].pop * 100;
+  document.querySelector("#precipitation").innerHTML = Math.round(
+    response.data.daily[0].pop * 100
+  );
 }
 
 function showError() {
