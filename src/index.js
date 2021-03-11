@@ -74,15 +74,19 @@ function displayWeather(response) {
 
   //set background
   let hours = timeAtLocation.split(":")[0];
-  if (hours >= 5 && hours < 9) {
+  if (hours >= 4 && hours < 6) {
+    document.body.style.backgroundImage = "url('images/early-morning.jpg')";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
+  } else if (hours >= 6 && hours < 9) {
     document.body.style.backgroundImage = "url('images/morning.jpg')";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
-  } else if (hours >= 9 && hours < 16) {
+  } else if (hours >= 9 && hours < 17) {
     document.body.style.backgroundImage = "url('images/day.jpg')";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
-  } else if (hours >= 16 && hours < 20) {
+  } else if (hours >= 17 && hours < 21) {
     document.body.style.backgroundImage = "url('images/evening.jpg')";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
@@ -98,11 +102,10 @@ function displayHourlyForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = null;
   let forecast = null;
-
   for (let index = 0; index < 8; index++) {
     let forecast = response.data.list[index];
     forecastElement.innerHTML += `      
-     <div class="col-1 hour">
+     <div class="col-3 col-sm-1 hour">
         <div class="hour-unit">${formatHours(
           formatLocalHours(
             response.data.city.timezone,
@@ -125,11 +128,14 @@ function displayDailyForecast(response) {
   let dailyForecastElement = document.querySelector("#daily-forecast");
   dailyForecastElement.innerHTML = null;
   let dailyForecastArray = null;
-
   for (let index = 0; index < 5; index++) {
     dailyForecastArray = response.data.daily[index];
     dailyForecastElement.innerHTML += `
-    <div class="col-2" id="date">
+    <div class="col-2" id="date" ${
+      Number(index) === 0
+        ? 'style="box-shadow: rgb(255 255 255) 0px 0px 7px;"'
+        : ""
+    }>
       <div class= "week-day">
       ${formatDay(dailyForecastArray.dt * 1000)}
       </div>
@@ -144,13 +150,6 @@ function displayDailyForecast(response) {
         </div>
     `;
   }
-
-  //add glowing border for today
-  if ((response.data.daily = [0])) {
-    document.querySelector("#date").style.boxShadow =
-      "rgb(255 255 255) 0px 0px 7px";
-  }
-
   //display precipitation
   document.querySelector("#precipitation").innerHTML =
     response.data.daily[0].pop * 100;
