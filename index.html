@@ -79,8 +79,9 @@
             <li id="description"></li>
             <li><img src="" id="icon" /></li>
           </ul>
-          <div class="details">
-            <ul class="weather-details">
+          <div class="row details">
+              <div class ="col-sm-5">
+              <ul class="weather-details">
               <li>
                 <span class="details-icon"
                   ><i class="fas fa-temperature-low"></i
@@ -94,10 +95,14 @@
                 <span class="adjustHumidity">Humidity </span
                 ><span id="humidity"></span>%
               </li>
+              </ul>
+              </div>
+              <div class="col-sm-6">
+              <ul class="weather-details2">
               <li>
                 <span class="details-icon"
                   ><i class="fas fa-umbrella"></i></span>
-                <span class="adjustPop">PoP </span
+                <span class="adjustPop">Chance of rain </span
                 ><span id="precipitation"></span>%
               </li>
               <li>
@@ -105,7 +110,8 @@
                 <span class="adjustWind">Wind </span
                 ><span id="windSpeed"></span> km/h
               </li>
-            </ul>
+              </ul>
+              </div>
           </div>
         </div>
       </div>

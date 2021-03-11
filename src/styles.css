@@ -138,14 +138,17 @@ h5 {
 }
 
 .weather-details {
-  columns: 2;
-  -webkit-columns: 2;
-  -moz-columns: 2;
   list-style: none;
   padding: 0;
   margin: 0;
   font-weight: bold;
-  letter-spacing: 0.01em;
+}
+
+.weather-details2 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
 }
 
 .adjustHumidity {
