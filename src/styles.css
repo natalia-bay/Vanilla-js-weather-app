@@ -151,11 +151,15 @@ h5 {
   font-weight: bold;
 }
 
+.details2col {
+  padding-left: 7px;
+}
+
 .adjustHumidity {
   margin-left: 8px;
 }
 
-.adjustPop {
+.adjustPrecipitation {
   margin-left: 2px;
 }
 
