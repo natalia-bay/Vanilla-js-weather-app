@@ -229,3 +229,9 @@ h5 {
 .daily-temp-min {
   color: #48484a;
 }
+
+@media (max-width: 400px) {
+  .details {
+    text-align: center;
+  }
+}
