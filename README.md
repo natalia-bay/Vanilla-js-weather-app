@@ -15,3 +15,4 @@ It is hosted on Netlify and can be viewed [here](https://sad-lichterman-38115d.n
 * Gets the current location weather with one click of a button
 * Displays local time for the selected location
 * Mobile, tablet, and desktop responsive
+* Displays a different background depending on the time of the day in the searched location
